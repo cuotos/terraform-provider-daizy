@@ -22,6 +22,7 @@ func Provider() *schema.Provider {
 		ResourcesMap: map[string]*schema.Resource{
 			"daizy_project": resourceProject(),
 		},
+		DataSourcesMap: map[string]*schema.Resource{},
 		ConfigureContextFunc: func(context context.Context, data *schema.ResourceData) (i interface{}, diagnostics diag.Diagnostics) {
 			client, err := daizy.New(data.Get("organisation").(string), data.Get("authtoken").(string))
 			if err != nil {

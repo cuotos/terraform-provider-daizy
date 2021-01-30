@@ -31,7 +31,7 @@ func resourceProject() *schema.Resource {
 func resourceProjectCreate(ctx context.Context, data *schema.ResourceData, m interface{}) diag.Diagnostics {
 	client := m.(*daizy.API)
 
-	project := daizy.CreateProject{
+	project := daizy.Project{
 		Name:   data.Get("name").(string),
 		UserID: data.Get("user_id").(int),
 	}
@@ -55,7 +55,7 @@ func resourceProjectUpdate(ctx context.Context, data *schema.ResourceData, m int
 		return diag.FromErr(err)
 	}
 
-	updateProject := daizy.UpdateProject{
+	updateProject := daizy.Project{
 		Name:   data.Get("name").(string),
 		UserID: data.Get("user_id").(int),
 	}
